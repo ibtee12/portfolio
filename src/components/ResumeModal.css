@@ -1,0 +1,352 @@
+.resume-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.resume-modal-container {
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  background: #ffffff;
+  color: #1a1a2e;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.resume-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: #0f172a;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.modal-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #60a5fa;
+}
+
+.modal-header-title h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-btn {
+  padding: 6px 14px;
+  font-size: 13px;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.modal-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.modal-close-btn {
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Printable Resume Sheet */
+.printable-resume-sheet {
+  padding: 36px 40px;
+  overflow-y: auto;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #1a1a2e;
+}
+
+.sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #e2e8f0;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.sheet-header-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sheet-profile-img {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  border: 2px solid #2563eb;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+}
+
+.sheet-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.sheet-role {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
+.sheet-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: #475569;
+}
+
+.sheet-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sheet-contact-item a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.sheet-links-bar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+  color: #2563eb;
+  flex-wrap: wrap;
+}
+
+.sheet-links-bar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sheet-grid {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 28px;
+  padding-top: 20px;
+}
+
+.sheet-section {
+  margin-bottom: 24px;
+}
+
+.sheet-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #2563eb;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1.5px solid #dbeafe;
+}
+
+.sheet-text {
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.65;
+}
+
+.sheet-project {
+  margin-bottom: 18px;
+}
+
+.sheet-project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.sheet-proj-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.sheet-proj-links {
+  display: flex;
+  gap: 8px;
+  font-size: 11.5px;
+}
+
+.sheet-proj-links a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sheet-proj-summary {
+  font-size: 12.5px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.sheet-proj-bullets {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sheet-proj-bullets li {
+  font-size: 12px;
+  color: #475569;
+  padding-left: 12px;
+  position: relative;
+}
+
+.sheet-proj-bullets li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #2563eb;
+  font-size: 10px;
+}
+
+.sheet-edu {
+  margin-bottom: 12px;
+}
+.sheet-edu-degree {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+}
+.sheet-edu-school {
+  font-size: 12px;
+  color: #334155;
+}
+.sheet-edu-meta {
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.sheet-skills-group {
+  margin-bottom: 14px;
+}
+
+.sheet-skill-category {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.sheet-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.sheet-tag {
+  background: #f0f4ff;
+  color: #2563eb;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  border: 1px solid #dbeafe;
+}
+
+.sheet-tag.soft {
+  background: #f0fdf4;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+/* Print Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-resume-sheet,
+  .printable-resume-sheet * {
+    visibility: visible;
+  }
+  .printable-resume-sheet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .printable-resume-sheet {
+    padding: 24px 20px;
+  }
+  .sheet-grid {
+    grid-template-columns: 1fr;
+  }
+}
