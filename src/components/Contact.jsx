@@ -7,6 +7,10 @@ import {
   Check,
   Send,
   ArrowUpRight,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
+  AlertTriangle,
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { resumeData } from '../data/resumeData';
@@ -16,7 +20,8 @@ export default function Contact() {
   const { personal } = resumeData;
   const [copied, setCopied] = useState(false);
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'needs_activation' | 'error'
+  const [errorMessage, setErrorMessage] = useState('');
 
   const fallbackCopy = (text) => {
     const textArea = document.createElement('textarea');
@@ -50,19 +55,49 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formState.name || !formState.email || !formState.message) return;
-    const mailtoUrl = `mailto:${personal.email}?subject=Portfolio Contact from ${encodeURIComponent(
-      formState.name
-    )}&body=${encodeURIComponent(formState.message + '\n\nReply to: ' + formState.email)}`;
+    if (!formState.name.trim() || !formState.email.trim() || !formState.message.trim()) return;
 
-    setSubmitted(true);
-    window.open(mailtoUrl, '_blank');
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormState({ name: '', email: '', message: '' });
-    }, 4000);
+    setStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${personal.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+          _subject: `New Portfolio Message from ${formState.name}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success === 'true' || response.ok) {
+        setStatus('success');
+        setFormState({ name: '', email: '', message: '' });
+      } else if (data.message && data.message.toLowerCase().includes('activation')) {
+        // FormSubmit requires one-time activation on first email receipt
+        setStatus('needs_activation');
+        setFormState({ name: '', email: '', message: '' });
+      } else {
+        throw new Error(data.message || 'Failed to deliver message. Please try again.');
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setStatus('error');
+      setErrorMessage(
+        err.message || 'Network error while delivering message. You can also reach out directly via email.'
+      );
+    }
   };
 
   return (
@@ -170,13 +205,69 @@ export default function Contact() {
               Have an opening or project idea? Drop a note directly to my inbox.
             </p>
 
-            {submitted ? (
-              <div className="form-success-box animate-fade-in">
-                <Check size={28} className="success-icon" />
-                <h4>Message Ready!</h4>
-                <p>Opening your email client to send to <strong>{personal.email}</strong>...</p>
+            {status === 'success' && (
+              <div className="form-feedback-box form-success-box animate-fade-in">
+                <CheckCircle2 size={36} className="success-icon" />
+                <h4>Message Delivered Directly!</h4>
+                <p>
+                  Thank you! Your message was sent straight to <strong>{personal.email}</strong>. I will get back to you shortly.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setStatus('idle')}
+                  className="btn btn-secondary form-reset-btn"
+                >
+                  Send Another Message
+                </button>
               </div>
-            ) : (
+            )}
+
+            {status === 'needs_activation' && (
+              <div className="form-feedback-box form-activation-box animate-fade-in">
+                <AlertCircle size={36} className="activation-icon" />
+                <h4>Inbox Activation Needed</h4>
+                <p>
+                  This is the first message submitted! FormSubmit has sent a quick confirmation email to <strong>{personal.email}</strong>.
+                </p>
+                <p className="activation-hint">
+                  Please open <strong>{personal.email}</strong> and click <em>"Activate Form"</em> once. After that, this and all future messages will arrive directly into your inbox!
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setStatus('idle')}
+                  className="btn btn-secondary form-reset-btn"
+                >
+                  Back to Form
+                </button>
+              </div>
+            )}
+
+            {status === 'error' && (
+              <div className="form-feedback-box form-error-box animate-fade-in">
+                <AlertTriangle size={36} className="error-icon" />
+                <h4>Delivery Issue</h4>
+                <p>{errorMessage}</p>
+                <div className="form-error-actions">
+                  <button
+                    type="button"
+                    onClick={() => setStatus('idle')}
+                    className="btn btn-secondary"
+                  >
+                    Try Again
+                  </button>
+                  <a
+                    href={`mailto:${personal.email}?subject=Portfolio Inquiry&body=${encodeURIComponent(
+                      formState.message
+                    )}`}
+                    className="btn btn-primary"
+                  >
+                    Send via Email App
+                  </a>
+                </div>
+              </div>
+            )}
+
+            {(status === 'idle' || status === 'submitting') && (
               <form onSubmit={handleSubmit} className="contact-form">
                 <div className="form-group">
                   <label htmlFor="contact-name">Your Name</label>
@@ -187,6 +278,7 @@ export default function Contact() {
                     placeholder="e.g. Alex Johnson"
                     value={formState.name}
                     onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                    disabled={status === 'submitting'}
                   />
                 </div>
 
@@ -199,6 +291,7 @@ export default function Contact() {
                     placeholder="e.g. alex@example.com"
                     value={formState.email}
                     onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    disabled={status === 'submitting'}
                   />
                 </div>
 
@@ -211,12 +304,26 @@ export default function Contact() {
                     placeholder="Hi Nahyan, I loved your projects and would like to discuss..."
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                    disabled={status === 'submitting'}
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary submit-btn">
-                  <Send size={15} />
-                  <span>Send Message</span>
+                <button
+                  type="submit"
+                  className="btn btn-primary submit-btn"
+                  disabled={status === 'submitting'}
+                >
+                  {status === 'submitting' ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      <span>Sending to {personal.email}...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={15} />
+                      <span>Send Message Directly</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}

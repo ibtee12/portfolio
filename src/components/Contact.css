@@ -211,9 +211,15 @@ a.contact-main-val:hover {
   font-weight: 600;
 }
 
-/* Success Feedback */
-.form-success-box {
-  padding: 40px 20px;
+.submit-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Feedback Boxes */
+.form-feedback-box {
+  padding: 36px 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -221,18 +227,51 @@ a.contact-main-val:hover {
   gap: 12px;
 }
 
+.form-feedback-box h4 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.form-feedback-box p {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 440px;
+  line-height: 1.6;
+}
+
 .success-icon {
   color: var(--success);
 }
 
-.form-success-box h4 {
-  font-size: 18px;
-  font-weight: 700;
+.activation-icon {
+  color: #f59e0b;
 }
 
-.form-success-box p {
-  font-size: 14px;
-  color: var(--text-muted);
+.error-icon {
+  color: #ef4444;
+}
+
+.activation-hint {
+  font-size: 13px !important;
+  color: var(--text-secondary) !important;
+  background: var(--bg-subtle);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.form-reset-btn {
+  margin-top: 6px;
+  padding: 8px 18px;
+}
+
+.form-error-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 @media (max-width: 800px) {
