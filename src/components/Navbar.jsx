@@ -55,7 +55,7 @@ export default function Navbar({ theme, toggleTheme, onOpenResume }) {
             <button
               onClick={onOpenResume}
               className="btn btn-secondary navbar-resume-btn"
-              title="View & Download Resume"
+              title="View Resume"
             >
               <FileText size={15} />
               <span>Resume</span>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Printer, ExternalLink, Mail, Phone, MapPin } from 'lucide-react';
+import { X, ExternalLink, Mail, Phone, MapPin } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { resumeData } from '../data/resumeData';
 import './ResumeModal.css';
@@ -9,24 +9,16 @@ export default function ResumeModal({ isOpen, onClose }) {
 
   const { personal, projects, skills, education } = resumeData;
 
-  const handlePrint = () => {
-    window.print();
-  };
-
   return (
     <div className="resume-modal-overlay" onClick={onClose}>
       <div className="resume-modal-container" onClick={(e) => e.stopPropagation()}>
         {/* Modal Top Bar */}
-        <div className="resume-modal-header no-print">
+        <div className="resume-modal-header">
           <div className="modal-header-title">
             <span className="modal-badge">Resume Preview</span>
             <h3>Nahyan Yasir Ibtee · Curriculum Vitae</h3>
           </div>
           <div className="modal-header-actions">
-            <button onClick={handlePrint} className="btn btn-secondary modal-btn">
-              <Printer size={15} />
-              <span>Print / Save PDF</span>
-            </button>
             <button onClick={onClose} className="modal-close-btn" aria-label="Close modal">
               <X size={20} />
             </button>
