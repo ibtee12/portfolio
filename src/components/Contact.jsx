@@ -63,7 +63,8 @@ export default function Contact() {
     setErrorMessage('');
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${personal.email}`, {
+      const endpoint = personal.formEndpoint || personal.email;
+      const response = await fetch(`https://formsubmit.co/ajax/${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
