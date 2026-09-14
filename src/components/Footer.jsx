@@ -41,11 +41,11 @@ export default function Footer() {
             </span>
           </div>
 
-          {/* Live Dhaka Time Clock */}
-          <div className="footer-time-card">
-            <Clock size={14} className="time-icon" />
-            <span className="time-label">Dhaka (BST):</span>
-            <span className="time-value">{dhakaTime || '6:00 PM'}</span>
+          {/* Live Rajshahi Time Clock */}
+          <div className="footer-clock">
+            <span className="clock-dot animate-pulse-dot" />
+            <span className="time-label">Rajshahi (BST):</span>
+            <span className="time-value">{dhakaTime || '12:00 AM'}</span>
           </div>
 
           <button

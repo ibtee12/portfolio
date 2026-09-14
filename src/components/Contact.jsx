@@ -104,11 +104,14 @@ export default function Contact() {
   return (
     <section id="contact" className="section contact-section">
       <div className="section-header">
-        <span className="section-label">04 // DIRECT INQUIRY</span>
-        <h2 className="section-title">LET’S CONNECT &amp; COLLABORATE</h2>
-        <p className="section-desc">
-          Actively exploring Junior Frontend Developer roles, full-stack opportunities, and impactful software engineering projects.
-        </p>
+        <span className="section-index" aria-hidden="true">05</span>
+        <div className="section-heading-block">
+          <span className="section-label">Get in touch</span>
+          <h2 className="section-title">Contact</h2>
+          <p className="section-subtitle">
+            Collaborations, frontend roles, or a technical chat — I’m listening.
+          </p>
+        </div>
       </div>
 
       <div className="contact-layout">

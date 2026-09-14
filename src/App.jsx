@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import MarqueeStrip from './components/MarqueeStrip';
+import About from './components/About';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Education from './components/Education';
@@ -59,8 +61,14 @@ export default function App() {
         onOpenResume={() => setIsResumeOpen(true)}
       />
 
+      {/* Full-bleed Hero & Ambient Atmosphere */}
+      <Hero onOpenResume={() => setIsResumeOpen(true)} />
+
+      {/* Signature Continuous Marquee Ticker */}
+      <MarqueeStrip />
+
       <main className="main-content">
-        <Hero onOpenResume={() => setIsResumeOpen(true)} />
+        <About onOpenResume={() => setIsResumeOpen(true)} />
         <Projects />
         <Skills />
         <Education />

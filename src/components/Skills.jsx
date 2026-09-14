@@ -32,11 +32,14 @@ export default function Skills() {
   return (
     <section id="skills" className="section skills-section">
       <div className="section-header">
-        <span className="section-label">02 // TECHNICAL TOOLKIT</span>
-        <h2 className="section-title">SKILLS &amp; TECHNOLOGIES</h2>
-        <p className="section-desc">
-          Core engineering toolkit focused on scalable frontend systems, asynchronous state management, secure database design, and algorithmic problem solving.
-        </p>
+        <span className="section-index" aria-hidden="true">03</span>
+        <div className="section-heading-block">
+          <span className="section-label">Capabilities &amp; tools</span>
+          <h2 className="section-title">Skills</h2>
+          <p className="section-subtitle">
+            Core engineering toolkit focused on scalable frontend systems, asynchronous state management, and modern web development.
+          </p>
+        </div>
       </div>
 
       {/* Category Tabs */}

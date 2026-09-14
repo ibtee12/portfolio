@@ -5,7 +5,7 @@ export const resumeData = {
     title: "Junior Frontend Developer",
     subtitle: "CSE Undergrad at RUET · Crafting High-Performance & Minimalist Web Experiences",
     status: "Available for Frontend Developer roles",
-    location: "Mirpur-1, Dhaka, Bangladesh",
+    location: "Rajshahi, Bangladesh",
     email: "ibtee555@gmail.com",
     formEndpoint: "4c98d85275b04a6d1a3ee356e7a81cd3",
     phone: "+8801988662950",
@@ -13,13 +13,13 @@ export const resumeData = {
     github: "https://github.com/ibtee12",
     linkedin: "https://www.linkedin.com/in/nahyan-ibtee/",
     liveDemo: "https://xyz-care.vercel.app",
-    bio: "A passionate Computer Science & Engineering student at RUET in my 3rd year with hands-on experience building full-stack web applications. I specialize in modern frontend engineering with React, Next.js, and sleek responsive CSS, turning complex product logic into clean, intuitive, and accessible user interfaces.",
+    bio: "A passionate Computer Science & Engineering student at RUET ('22 Batch) with hands-on experience building full-stack web applications. I specialize in modern frontend engineering with React, Next.js, and clean CSS, turning complex product logic into intuitive, accessible user interfaces.",
   },
   stats: [
     { label: "Education", value: "RUET CSE '22" },
     { label: "Core Stack", value: "React & Next.js" },
     { label: "Specialty", value: "Clean, Responsive UI" },
-    { label: "Location", value: "Dhaka, Bangladesh" },
+    { label: "Location", value: "Rajshahi, Bangladesh" },
   ],
   projects: [
     {

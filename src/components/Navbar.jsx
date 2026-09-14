@@ -15,10 +15,11 @@ export default function Navbar({ theme, toggleTheme, onOpenResume }) {
   }, []);
 
   const navLinks = [
-    { num: '01', name: 'Projects', href: '#projects' },
-    { num: '02', name: 'Skills', href: '#skills' },
-    { num: '03', name: 'Education', href: '#education' },
-    { num: '04', name: 'Contact', href: '#contact' },
+    { num: '01', name: 'About', href: '#about' },
+    { num: '02', name: 'Projects', href: '#projects' },
+    { num: '03', name: 'Skills', href: '#skills' },
+    { num: '04', name: 'Education', href: '#education' },
+    { num: '05', name: 'Contact', href: '#contact' },
   ];
 
   return (

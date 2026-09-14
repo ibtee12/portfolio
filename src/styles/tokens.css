@@ -1,66 +1,74 @@
 :root {
-  /* Font Families — Editorial & Technical */
+  /* Font Families — Editorial & Technical inspired by zarcerog.com / dev.ittahad.site */
   --font-display: 'Bebas Neue', Impact, sans-serif;
   --font-heading: 'Bebas Neue', 'Barlow Condensed', sans-serif;
   --font-subheading: 'Barlow Condensed', sans-serif;
-  --font-body: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+  --font-body: 'Barlow Condensed', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
 
   /* Transitions */
-  --transition-fast: 150ms cubic-bezier(0.22, 1, 0.36, 1);
-  --transition-normal: 260ms cubic-bezier(0.22, 1, 0.36, 1);
-  --transition-smooth: 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 150ms var(--ease-out);
+  --transition-normal: 280ms var(--ease-out);
+  --transition-smooth: 450ms var(--ease-out);
 
   /* Radii */
-  --radius-xs: 3px;
+  --radius-xs: 4px;
   --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* Spacing */
-  --max-width: 1160px;
+  /* Layout */
+  --nav-h: 76px;
+  --max-width: 1200px;
+  --container: min(1200px, 100% - 2.5rem);
+
+  --z-grain: 900;
+  --z-progress: 950;
+  --z-nav: 1000;
 }
 
-/* Dark Theme — Editorial High Contrast */
+/* Dark Theme — Matches dev.ittahad.site */
 [data-theme='dark'] {
-  --bg-primary: #070708;
-  --bg-secondary: #0d0d11;
-  --bg-card: rgba(18, 18, 22, 0.65);
-  --bg-card-hover: rgba(26, 26, 32, 0.88);
-  --bg-elevated: #141418;
-  --bg-subtle: rgba(255, 255, 255, 0.03);
-  --bg-tag: rgba(255, 59, 0, 0.09);
-  --bg-tag-hover: rgba(255, 59, 0, 0.18);
+  --bg-primary: #060606;
+  --bg-secondary: #0a0a0a;
+  --bg-elevated: #0e0e0e;
+  --bg-surface: rgba(255, 255, 255, 0.035);
+  --bg-card: rgba(255, 255, 255, 0.035);
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --bg-subtle: rgba(255, 255, 255, 0.025);
+  --bg-tag: rgba(255, 45, 0, 0.1);
+  --bg-tag-hover: rgba(255, 45, 0, 0.18);
 
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-card: rgba(255, 255, 255, 0.11);
-  --border-hover: rgba(255, 75, 20, 0.55);
+  --border-card: rgba(255, 255, 255, 0.12);
+  --border-hover: #ff2d00;
 
   --text-primary: #f5f2eb;
-  --text-secondary: #b5b0a4;
-  --text-muted: #807b71;
-  --text-dim: #545048;
+  --text-secondary: #9c9890;
+  --text-muted: #6b6760;
+  --text-dim: #45423d;
 
-  /* Signature Electric Flame Red Accent */
-  --accent-primary: #ff3b00;
-  --accent-secondary: #ff5f2e;
-  --accent-glow: rgba(255, 59, 0, 0.38);
-  --accent-soft: rgba(255, 59, 0, 0.12);
+  /* Signature Electric Flame Red Accent (#ff2d00) */
+  --accent-primary: #ff2d00;
+  --accent-secondary: #ff4d24;
+  --accent-glow: rgba(255, 45, 0, 0.45);
+  --accent-soft: rgba(255, 45, 0, 0.14);
 
   --success: #10b981;
   --success-glow: rgba(16, 185, 129, 0.25);
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.6);
   --shadow-md: 0 12px 35px rgba(0, 0, 0, 0.55);
-  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.7);
-  --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.65);
+  --shadow-card: 0 24px 70px rgba(0, 0, 0, 0.45);
 
-  --glass-bg: rgba(7, 7, 8, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-bg: rgba(6, 6, 6, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.1);
 
-  --hero-gradient: radial-gradient(circle at 60% 0%, rgba(255, 59, 0, 0.12) 0%, rgba(7, 7, 8, 0) 65%);
+  --hero-gradient: radial-gradient(circle at 75% 15%, rgba(255, 45, 0, 0.15) 0%, rgba(6, 6, 6, 0) 60%);
 }
 
 /* Light Theme — Warm Newsprint Paper */

@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
   Mail,
   MapPin,
-  Sparkles,
   FileText,
-  GraduationCap,
-  Terminal,
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { resumeData } from '../data/resumeData';
@@ -15,133 +12,169 @@ import './Hero.css';
 export default function Hero({ onOpenResume }) {
   const { personal, stats } = resumeData;
 
+  // Typing text effect like dev.ittahad.site
+  const titles = [
+    "RUET CSE '22 Undergraduate",
+    "Junior Frontend Developer",
+    "React & Next.js Architect",
+    "Full-Stack Web Enthusiast",
+  ];
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentFullText = titles[currentTitleIndex];
+    let typingSpeed = isDeleting ? 40 : 80;
+
+    if (!isDeleting && displayedText === currentFullText) {
+      // Pause at full text
+      const timeout = setTimeout(() => setIsDeleting(true), 1800);
+      return () => clearTimeout(timeout);
+    }
+
+    if (isDeleting && displayedText === '') {
+      setIsDeleting(false);
+      setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setDisplayedText((prev) =>
+        isDeleting
+          ? currentFullText.substring(0, prev.length - 1)
+          : currentFullText.substring(0, prev.length + 1)
+      );
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, currentTitleIndex]);
+
   return (
-    <section className="hero-section">
-      <div className="hero-container">
-        {/* Left Column: Editorial Headline & Bio */}
-        <div className="hero-main-content">
-          {/* Eyebrow / Technical Tag */}
-          <div className="hero-eyebrow">
-            <span className="eyebrow-badge">
-              <span className="eyebrow-symbol">//</span>
-              <span>JUNIOR FRONTEND DEVELOPER</span>
-            </span>
-            <div className="eyebrow-location">
-              <MapPin size={12} />
-              <span>{personal.location}</span>
-            </div>
+    <section id="home" className="hero">
+      {/* Subtle Coordinate Grid & Ambient Glowing Orbs */}
+      <div className="hero-background" aria-hidden="true">
+        <div className="hero-grid-lines" />
+        <div className="gradient-orb orb-1" />
+        <div className="gradient-orb orb-2" />
+        <div className="gradient-orb orb-3" />
+      </div>
+
+      <div className="hero-content-container">
+        <div className="hero-text-col">
+          {/* Greeting Line */}
+          <p className="hero-greeting">
+            <span className="hero-greeting-line" />
+            <span>Junior Frontend Developer &bull; RUET CSE '22</span>
+          </p>
+
+          {/* Name Display */}
+          <h1 className="hero-name">
+            <span className="hero-name-legal">Nahyan Yasir</span>
+            <span className="hero-name-alias">Ibtee</span>
+          </h1>
+
+          {/* Dynamic Typing Title */}
+          <div className="hero-title" aria-live="polite">
+            <span className="typing-text">{displayedText}</span>
+            <span className="cursor" aria-hidden="true">|</span>
           </div>
 
-          {/* Main Display Headline */}
-          <div className="hero-content">
-            <h1 className="hero-headline">
-              NAHYAN <span className="hero-name-accent">YASIR IBTEE</span>
-            </h1>
+          {/* Clean Description */}
+          <p className="hero-description">
+            Computer Science &amp; Engineering undergrad at{' '}
+            <strong className="text-emphasis">RUET (CSE '22 Batch)</strong> in Rajshahi, Bangladesh.
+            Crafting responsive, high-performance web applications with React, Next.js, Node.js, and clean CSS architecture.
+          </p>
 
-            {/* Editorial Stack Line */}
-            <div className="hero-stack-ticker">
-              <span className="ticker-dot">●</span>
-              <span className="ticker-text">REACT.JS // NEXT.JS // FULL-STACK WEB ARCHITECTURE</span>
-            </div>
-
-            <p className="hero-tagline">
-              Computer Science &amp; Engineering undergrad at{' '}
-              <strong className="text-emphasis">RUET (CSE '22 Batch)</strong> crafting clean,
-              production-grade, and responsive web applications.
-            </p>
-
-            <p className="hero-bio">{personal.bio}</p>
+          {/* Location Badge */}
+          <div className="hero-location-tag">
+            <MapPin size={13} className="location-pin-icon" />
+            <span>Rajshahi, Bangladesh</span>
+            <span className="location-sep">•</span>
+            <span className="status-live-dot" />
+            <span className="status-live-text">Available for Frontend Roles</span>
           </div>
 
-          {/* Editorial Stats Grid */}
-          <div className="hero-stats-grid">
-            {stats.map((stat, idx) => (
-              <div key={idx} className="hero-stat-card">
-                <span className="stat-idx">0{idx + 1}.</span>
-                <span className="stat-label">{stat.label}</span>
-                <span className="stat-value">{stat.value}</span>
-              </div>
-            ))}
+          {/* Action CTAs */}
+          <div className="hero-cta-group">
+            <a href="#projects" className="btn btn-primary">
+              <span>View work</span>
+              <ArrowRight size={15} />
+            </a>
+            <a href="#contact" className="btn btn-secondary">
+              <span>Contact</span>
+              <Mail size={15} />
+            </a>
+            {onOpenResume && (
+              <button onClick={onOpenResume} className="btn btn-ghost hero-cv-btn">
+                <FileText size={15} />
+                <span>Resume</span>
+              </button>
+            )}
           </div>
 
-          {/* Action CTAs & Social Links */}
-          <div className="hero-actions-wrapper">
-            <div className="hero-cta-group">
-              <a href="#projects" className="btn btn-primary">
-                <span>View Projects</span>
-                <ArrowRight size={14} />
-              </a>
-              <a href="#contact" className="btn btn-secondary">
-                <span>Get In Touch</span>
-              </a>
-              {onOpenResume && (
-                <button onClick={onOpenResume} className="btn btn-ghost hero-cv-btn">
-                  <FileText size={14} />
-                  <span>Resume</span>
-                </button>
-              )}
-            </div>
-
-            <div className="hero-socials">
-              <a
-                href={personal.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-icon-link"
-                aria-label="GitHub Profile"
-                title="GitHub Profile"
-              >
-                <GithubIcon size={17} />
-              </a>
-              <a
-                href={personal.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-icon-link"
-                aria-label="LinkedIn Profile"
-                title="LinkedIn Profile"
-              >
-                <LinkedinIcon size={17} />
-              </a>
-              <a
-                href={`mailto:${personal.email}`}
-                className="social-icon-link"
-                aria-label="Send Email"
-                title="Send Email"
-              >
-                <Mail size={17} />
-              </a>
-            </div>
+          {/* Social Links */}
+          <div className="hero-social">
+            <a
+              href={personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              aria-label="LinkedIn"
+              title="LinkedIn Profile"
+            >
+              <LinkedinIcon size={17} />
+            </a>
+            <a
+              href={personal.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              aria-label="GitHub"
+              title="GitHub Profile"
+            >
+              <GithubIcon size={17} />
+            </a>
+            <a
+              href={`mailto:${personal.email}`}
+              className="social-link"
+              aria-label="Email"
+              title="Send Email"
+            >
+              <Mail size={17} />
+            </a>
           </div>
         </div>
 
-        {/* Right Column: Editorial Portrait Card */}
-        <div className="hero-image-column">
-          <div className="profile-card-wrapper">
-            <div className="profile-glow-ring" />
-
-            <div className="profile-image-frame">
+        {/* Hero Portrait Column */}
+        <div className="hero-portrait-col">
+          <div className="hero-portrait">
+            <div className="hero-portrait-ring" aria-hidden="true" />
+            <div className="hero-portrait-frame">
               <img
                 src={personal.avatar}
-                alt={personal.name}
-                className="profile-photo"
+                alt="Nahyan Yasir Ibtee"
+                width="280"
+                height="280"
                 loading="eager"
               />
-              <div className="profile-overlay-gradient" />
             </div>
-
-            {/* Editorial Badges */}
-            <div className="profile-badge floating-badge-status">
-              <span className="status-dot animate-pulse-dot" />
-              <span>OPEN TO OPPORTUNITIES</span>
-            </div>
-
-            <div className="profile-badge floating-badge-edu">
-              <GraduationCap size={13} className="badge-edu-icon" />
+            <p className="hero-portrait-caption">
               <span>RUET CSE '22</span>
-            </div>
+              <span className="caption-sep">/</span>
+              <span>FRONTEND</span>
+            </p>
           </div>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="scroll-indicator" aria-hidden="true">
+        <div className="mouse">
+          <div className="wheel" />
+        </div>
+        <p>Scroll</p>
       </div>
     </section>
   );

@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Marquee Strip — dev.ittahad.site signature infinite tech ticker
+   ========================================================================== */
+
+.marquee-strip {
+  border-block: 1px solid var(--border-card);
+  background: var(--bg-secondary);
+  padding-block: 0.9rem;
+  overflow: hidden;
+  user-select: none;
+  position: relative;
+  z-index: 2;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeTrack 32s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeTrack {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  padding-right: 2.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.marquee-sep {
+  color: var(--accent-primary);
+  font-size: 0.6rem;
+}
