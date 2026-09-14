@@ -16,11 +16,26 @@ export default function App() {
   });
 
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('nahyan_portfolio_theme', theme);
   }, [theme]);
+
+  // Track scroll progress for top indicator
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        const currentProgress = (window.scrollY / totalScroll) * 100;
+        setScrollProgress(currentProgress);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -28,6 +43,16 @@ export default function App() {
 
   return (
     <div className="app-container">
+      {/* Editorial Film Grain Overlay */}
+      <div className="grain-layer" aria-hidden="true" />
+
+      {/* Top Scroll Progress Indicator */}
+      <div
+        className="scroll-progress-bar"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      />
+
       <Navbar
         theme={theme}
         toggleTheme={toggleTheme}

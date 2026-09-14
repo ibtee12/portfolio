@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, FileText, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Sun, Moon, FileText, Menu, X } from 'lucide-react';
 import './Navbar.css';
 
 export default function Navbar({ theme, toggleTheme, onOpenResume }) {
@@ -15,10 +15,10 @@ export default function Navbar({ theme, toggleTheme, onOpenResume }) {
   }, []);
 
   const navLinks = [
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Education', href: '#education' },
-    { name: 'Contact', href: '#contact' },
+    { num: '01', name: 'Projects', href: '#projects' },
+    { num: '02', name: 'Skills', href: '#skills' },
+    { num: '03', name: 'Education', href: '#education' },
+    { num: '04', name: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -28,7 +28,7 @@ export default function Navbar({ theme, toggleTheme, onOpenResume }) {
         <a href="#" className="navbar-brand">
           <span className="brand-logo">NI</span>
           <span className="brand-text">
-            Nahyan <span className="brand-dot">.dev</span>
+            NAHYAN <span className="brand-dot">IBTEE</span>
           </span>
         </a>
 
@@ -37,14 +37,15 @@ export default function Navbar({ theme, toggleTheme, onOpenResume }) {
           <span className="status-indicator">
             <span className="status-dot animate-pulse-dot" />
           </span>
-          <span className="status-text">Available for work</span>
+          <span className="status-text">AVAILABLE FOR HIRE</span>
         </div>
 
         {/* Desktop Nav */}
         <nav className="navbar-nav">
           {navLinks.map((link) => (
             <a key={link.name} href={link.href} className="nav-link">
-              {link.name}
+              <span className="nav-link-num">{link.num}.</span>
+              <span className="nav-link-text">{link.name}</span>
             </a>
           ))}
         </nav>
@@ -57,7 +58,7 @@ export default function Navbar({ theme, toggleTheme, onOpenResume }) {
               className="btn btn-secondary navbar-resume-btn"
               title="View Resume"
             >
-              <FileText size={15} />
+              <FileText size={14} />
               <span>Resume</span>
             </button>
           )}
@@ -68,7 +69,7 @@ export default function Navbar({ theme, toggleTheme, onOpenResume }) {
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
           </button>
 
           {/* Mobile Menu Button */}
@@ -93,7 +94,8 @@ export default function Navbar({ theme, toggleTheme, onOpenResume }) {
                 className="mobile-nav-link"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {link.name}
+                <span className="nav-link-num">{link.num}.</span>
+                <span>{link.name}</span>
               </a>
             ))}
             {onOpenResume && (

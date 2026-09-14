@@ -104,10 +104,10 @@ export default function Contact() {
   return (
     <section id="contact" className="section contact-section">
       <div className="section-header">
-        <span className="section-label">Get in touch</span>
-        <h2 className="section-title">Let’s Connect &amp; Collaborate</h2>
+        <span className="section-label">04 // DIRECT INQUIRY</span>
+        <h2 className="section-title">LET’S CONNECT &amp; COLLABORATE</h2>
         <p className="section-desc">
-          I am actively seeking Junior Frontend Developer roles, full-stack opportunities, and impactful software engineering projects.
+          Actively exploring Junior Frontend Developer roles, full-stack opportunities, and impactful software engineering projects.
         </p>
       </div>
 

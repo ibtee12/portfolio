@@ -9,10 +9,10 @@ export default function Education() {
   return (
     <section id="education" className="section education-section">
       <div className="section-header">
-        <span className="section-label">Academic Background</span>
-        <h2 className="section-title">Education</h2>
+        <span className="section-label">03 // ACADEMIC FOUNDATION</span>
+        <h2 className="section-title">EDUCATION &amp; MILESTONES</h2>
         <p className="section-desc">
-          Rigorous computer science foundation paired with real-world software engineering practice.
+          Rigorous computer science foundation covering algorithms, data structures, and software engineering at RUET.
         </p>
       </div>
 

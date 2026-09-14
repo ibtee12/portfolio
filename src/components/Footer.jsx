@@ -35,9 +35,9 @@ export default function Footer() {
       <div className="footer-container">
         <div className="footer-top-row">
           <div className="footer-brand">
-            <span className="footer-brand-title">Nahyan Yasir Ibtee</span>
+            <span className="footer-brand-title">NAHYAN YASIR IBTEE</span>
             <span className="footer-brand-desc">
-              Junior Frontend Developer · CSE Undergrad @ RUET
+              JUNIOR FRONTEND DEVELOPER · RUET CSE '22 BATCH
             </span>
           </div>
 

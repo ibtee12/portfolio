@@ -32,10 +32,10 @@ export default function Skills() {
   return (
     <section id="skills" className="section skills-section">
       <div className="section-header">
-        <span className="section-label">Technical Competencies</span>
-        <h2 className="section-title">Skills &amp; Technologies</h2>
+        <span className="section-label">02 // TECHNICAL TOOLKIT</span>
+        <h2 className="section-title">SKILLS &amp; TECHNOLOGIES</h2>
         <p className="section-desc">
-          A toolkit built around modern frontend frameworks, full-stack state management, robust database design, and algorithmic problem solving.
+          Core engineering toolkit focused on scalable frontend systems, asynchronous state management, secure database design, and algorithmic problem solving.
         </p>
       </div>
 

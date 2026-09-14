@@ -82,10 +82,11 @@ export default function ProjectCard({ project, index }) {
       {/* Project Details */}
       <div className="project-info">
         <div className="project-badge-row">
+          <span className="project-index-num">0{index + 1} //</span>
           <span className="badge">{project.badge}</span>
           <span className="project-status-tag">
             <span className="status-dot animate-pulse-dot" />
-            Live Project
+            Live System
           </span>
         </div>
 
