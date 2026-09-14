@@ -20,7 +20,7 @@ export default function ProjectCard({ project, index }) {
             <div className="window-url-bar">
               <span className="url-protocol">https://</span>
               <span className="url-domain">
-                {project.id === 'matrix-math-care' ? 'xyz-care.vercel.app' : 'digital-life-lessons.vercel.app'}
+                {project.liveUrl ? project.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'vercel.app'}
               </span>
             </div>
             <a

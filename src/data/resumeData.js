@@ -23,6 +23,47 @@ export const resumeData = {
   ],
   projects: [
     {
+      id: "drivefleet",
+      title: "DriveFleet",
+      badge: "Car Rental & Fleet Platform",
+      period: "Featured Project",
+      liveUrl: "https://drivefleet-client.vercel.app/",
+      clientGithubUrl: "https://github.com/ibtee12/DriveFleet-client",
+      serverGithubUrl: "https://github.com/ibtee12/DriveFleet-server",
+      summary:
+        "A modern full-stack peer-to-peer car rental and fleet management platform enabling users to browse, search, and book vehicles with dynamic pricing, while providing car owners with an authenticated dashboard to list, manage, and track fleet bookings.",
+      features: [
+        {
+          title: "Dynamic Fleet Discovery & Search",
+          desc: "Real-time exploration supporting keyword search using MongoDB $regex pattern matching, category filtering via $in, and dynamic price/date sorting.",
+        },
+        {
+          title: "Interactive Dynamic Booking Engine",
+          desc: "Live reservation modal calculating costs on the fly based on date ranges, optional chauffeur add-ons, and atomic popularity increments using MongoDB's $inc operator.",
+        },
+        {
+          title: "Full Fleet Owner CRUD Dashboard",
+          desc: "Dedicated owner workspace for publishing listings with image previews, inline modal edits, instant DB synchronization, and SweetAlert2 confirmation dialogues.",
+        },
+        {
+          title: "Dual-Layer Auth & Route Security",
+          desc: "Firebase Authentication (Email/Password & Google 1-Click OAuth) synchronized with backend-issued JWT tokens stored in secure HTTPOnly cookies to protect private endpoints.",
+        },
+      ],
+      tech: [
+        "React 18",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB Atlas",
+        "Firebase Auth",
+        "JWT (HTTPOnly)",
+        "Framer Motion",
+        "SweetAlert2",
+      ],
+      colorAccent: "#f59e0b",
+    },
+    {
       id: "matrix-math-care",
       title: "Matrix Math Care",
       badge: "Full-Stack EdTech",
@@ -99,9 +140,12 @@ export const resumeData = {
     { name: "HTML5 / Semantic Web", category: "frontend", level: "Expert", featured: false },
     { name: "CSS3 / Modern CSS", category: "frontend", level: "Advanced", featured: false },
     { name: "Tailwind CSS", category: "frontend", level: "Advanced", featured: true },
+    { name: "Framer Motion", category: "frontend", level: "Proficient", featured: false },
     { name: "DaisyUI", category: "frontend", level: "Proficient", featured: false },
 
     { name: "MongoDB", category: "backend", level: "Proficient", featured: true },
+    { name: "Firebase Auth", category: "backend", level: "Advanced", featured: true },
+    { name: "JWT (HTTPOnly)", category: "backend", level: "Advanced", featured: false },
     { name: "SQL", category: "backend", level: "Proficient", featured: false },
     { name: "Node.js / Express", category: "backend", level: "Proficient", featured: false },
     { name: "REST APIs", category: "backend", level: "Advanced", featured: false },
